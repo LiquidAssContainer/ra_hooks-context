@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { List, UserList } from './components/UserList/UserList';
 import { Details } from './components/UserList/Details';
+import { FetcherList } from './components/FetcherList/FetcherList';
+import { fetchUrls } from './constants/urls';
 
 import './styles/app.css';
 
@@ -24,9 +26,12 @@ export const App = () => {
   }, []);
 
   return (
-    <UserList>
-      <List users={users} onUserClick={onUserClick} selectedId={info?.id} />
-      {info && <Details info={info} />}
-    </UserList>
+    <>
+      <UserList>
+        <List users={users} onUserClick={onUserClick} selectedId={info?.id} />
+        {info && <Details info={info} />}
+      </UserList>
+      <FetcherList urls={fetchUrls} />
+    </>
   );
 };
